@@ -26,7 +26,7 @@
     <link href="{{ asset('../../assets/admin/pnotify/pnotify.custom.min.css') }}" rel="stylesheet" />
 
     <!-- Datatables styles -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-html5-1.5.1/b-print-1.5.1/fh-3.1.3/r-2.2.1/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https:////cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
 
     <!-- Custom Theme Style -->
     <link href="{{ asset('../../assets/admin/css/custom.min.css') }}" rel="stylesheet">
