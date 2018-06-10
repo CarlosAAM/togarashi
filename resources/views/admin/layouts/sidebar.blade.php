@@ -29,10 +29,10 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                     <li>
-                        <a href="{{route('home')}}"><i class="fa fa-tag"></i> Categorias </a>
+                        <a href="{{route('admin.categories')}}"><i class="fa fa-tag"></i> Categorias </a>
                     </li>
                     <li>
-                        <a href="{{route('home')}}"><i class="fa fa-apple"></i> Platillos </a>
+                        <a href="{{route('admin.dishes')}}"><i class="fa fa-apple"></i> Platillos </a>
                     </li>
                     <li>
                         <a href="{{route('home')}}"><i class="fa fa-image"></i> Galería </a>

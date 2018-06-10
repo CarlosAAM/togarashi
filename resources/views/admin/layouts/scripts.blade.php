@@ -9,5 +9,8 @@
 <!-- jQuery custom content scroller -->
 <script src="{{ asset('../../assets/admin/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
 
+<!-- Pnotify scripts -->
+<script src="{{ asset('../../assets/admin/pnotify/pnotify.custom.min.js') }}"></script>
+
 <!-- Custom Theme Scripts -->
 <script src="{{ asset('../../assets/admin/js/custom.min.js') }}"></script>
