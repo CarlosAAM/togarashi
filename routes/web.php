@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('admin.layouts.master');
+    return redirect(route('admin.dishes'));
 });
 
 Auth::routes();
@@ -40,7 +40,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('/platillos/{dish}/editar', 'DishController@edit')->name('dishes.edit');
     Route::post('/platillos', 'DishController@store')->name('dishes.store');
     Route::put('/platillos/{dish}', 'DishController@update')->name('dishes.update');
-    Route::delete('/platillos/{dish}', 'DishController@update')->name('dishes.destroy');
+    Route::delete('/platillos/{dish}', 'DishController@destroy')->name('dishes.destroy');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

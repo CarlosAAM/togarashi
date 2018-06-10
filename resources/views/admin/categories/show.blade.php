@@ -23,7 +23,7 @@ Categoria
                         
                         <button type="submit" class="btn btn-danger pull-right">Eliminar</button>
                         <a href="{{route('admin.categories.edit', ['id' => $category->id])}}" class="btn btn-primary pull-right">Editar</a>
-                        <a href="javascript:history.back()" class="btn btn-primary pull-right">Regresar</a>
+                        <a href="javascript:history.back()" class="btn btn-info pull-right">Regresar</a>
                     </form>
                 </div>
             </div>

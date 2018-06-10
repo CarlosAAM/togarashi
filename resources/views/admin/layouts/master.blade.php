@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ app()->getLocale() }}">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Togarashi Administration</title>
+    <title>{{ config('app.name', 'Laravel') }} Administration</title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('../../assets/admin/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -24,6 +24,9 @@
 
     <!-- Pnotify styles -->
     <link href="{{ asset('../../assets/admin/pnotify/pnotify.custom.min.css') }}" rel="stylesheet" />
+
+    <!-- Datatables styles -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-html5-1.5.1/b-print-1.5.1/fh-3.1.3/r-2.2.1/datatables.min.css"/>
 
     <!-- Custom Theme Style -->
     <link href="{{ asset('../../assets/admin/css/custom.min.css') }}" rel="stylesheet">
@@ -55,6 +58,8 @@
     </div>
 
     @include('admin.layouts.scripts')
+
+    @yield('scripts')
 
     @include('admin.layouts.errors')
     @include('admin.layouts.success')

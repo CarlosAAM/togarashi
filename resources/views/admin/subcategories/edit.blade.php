@@ -37,7 +37,7 @@ Editar subcategoría
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                <a href="javascript:history.back()" class="btn btn-primary">Regresar</a>
+                                <a href="javascript:history.back()" class="btn btn-info">Regresar</a>
                                 <button class="btn btn-primary" type="reset">Reiniciar</button>
                                 <button type="submit" class="btn btn-success">Guardar</button>
                             </div>

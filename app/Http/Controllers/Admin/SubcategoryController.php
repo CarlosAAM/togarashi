@@ -66,7 +66,7 @@ class SubcategoryController extends Controller
             return redirect()->back()->withInput()->withErrors($validator);
         }
 
-        $subcategory->name = $request->name;
+        $subcategory->fill($request->all());
         $subcategory->save();
 
         session()->flash('success', 'Subcategoria actualizada correctamente.');

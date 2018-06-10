@@ -17,7 +17,7 @@ class Dish extends Model
     */
 
     // Validates data to create or update the model
-    public function validate($data) {
+    public static function validate($data) {
         return Validator::make($data, [
             'name' => 'required|max:100|string',
             'description' => 'required|max:255|string',

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Dish;
+use App\Models\Category;
 
 class DishController extends Controller
 {
@@ -17,7 +18,7 @@ class DishController extends Controller
     public function index()
     {
         $dishes = Dish::all()->sortBy('name');
-        $categories = Categories::all()->sortBy('name');
+        $categories = Category::all()->sortBy('name');
 
         return view('admin.dishes.index', compact('dishes', 'categories'));
     }
@@ -60,7 +61,8 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        return view('admin.dishes.edit', compact('dish'));
+        $categories = Category::all()->sortBy('name');
+        return view('admin.dishes.edit', compact('dish', 'categories'));
     }
 
     /**
@@ -70,17 +72,14 @@ class DishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Dish $dish)
     {
         $validator = Dish::validate($request->all());
         if($validator->fails()){
             return redirect()->back()->withInput()->withErrors($validator);
         }
 
-        $dish->name = $request->name;
-        $dish->price = $request->price;
-        $dish->description = $request->description;
-        $dish->subcategory_id = $request->subcategory->id;
+        $dish->fill($request->all());
         $dish->save();
 
         session()->flash('success', 'Platillo actualizado correctamente.');
@@ -93,11 +92,11 @@ class DishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Dish $dish)
     {
         $dish->delete();
 
         session()->flash('success', 'Platillo eliminado correctamente.');
-        return redirect(route('admin.dished'));
+        return redirect(route('admin.dishes'));
     }
 }
