@@ -21,7 +21,7 @@ class CreateDishesTable extends Migration
             $table->timestamps();
 
             $table->integer('subcategory_id')->unsigned();
-            $table->foreign('subcategory_id')->references('id')->on('subcategories');
+            $table->foreign('subcategory_id')->references('id')->on('subcategories')->onDelete('cascade');;
         });
     }
 

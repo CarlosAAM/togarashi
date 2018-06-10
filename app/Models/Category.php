@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Validator;
 
 use App\Models\Subcategory;
@@ -10,14 +11,14 @@ use App\Models\Subcategory;
 class Category extends Model
 {
     // Fields available to fill in this model
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'image'];
 
     /**
      * Validations
     */
 
     // Validates data to create or update the model
-    public function validate($data) {
+    public static function validate($data) {
         return Validator::make($data, [
             'name' => 'required|max:100'
         ]);
