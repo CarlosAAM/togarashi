@@ -26,7 +26,10 @@ Route::group(['as' => 'guest.', 'namespace' => 'Guest'], function() {
 
 // Administration routes
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => 'auth'], function() {
-    
+    Route::get('/', function () {
+        return redirect(route('admin.dishes'));
+    });
+
     // Category routes
     Route::get('/categorias', 'CategoryController@index')->name('categories');
     Route::get('/categorias/{category}', 'CategoryController@show')->name('categories.show');

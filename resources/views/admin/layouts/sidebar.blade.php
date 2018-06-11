@@ -12,7 +12,7 @@
         <!-- menu profile quick info -->
         <div class="profile clearfix">
             <div class="profile_pic">
-                <img src="{{ asset('../../assets/admin/images/img.jpg') }}" alt="..." class="img-circle profile_img">
+                <img src="{{ asset('assets/admin/images/user.png') }}" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
                 <span>Bienvenido,</span>
@@ -35,7 +35,7 @@
                         <a href="{{route('admin.dishes')}}"><i class="fa fa-apple"></i> Platillos </a>
                     </li>
                     <li>
-                        <a href="{{route('home')}}"><i class="fa fa-image"></i> Galería </a>
+                        <a href="{{route('admin.images')}}"><i class="fa fa-image"></i> Imágenes </a>
                     </li>
                 </ul>
             </div>
@@ -45,9 +45,13 @@
 
         <!-- /menu footer buttons -->
         <div class="sidebar-footer hidden-small">
-            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+            <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
             </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
         </div>
         <!-- /menu footer buttons -->
     </div>
