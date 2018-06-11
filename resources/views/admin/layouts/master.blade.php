@@ -11,25 +11,25 @@
     <title>{{ config('app.name', 'Laravel') }} Administration</title>
 
     <!-- Bootstrap -->
-    <link href="{{ asset('../../assets/admin/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/admin/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
     
     <!-- NProgress -->
-    <link href="{{ asset('../../assets/admin/nprogress/nprogress.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/admin/nprogress/nprogress.css') }}" rel="stylesheet">
 
     <!-- jQuery custom content scroller -->
-    <link href="{{ asset('../../assets/admin/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/admin/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css') }}" rel="stylesheet" />
 
     <!-- Pnotify styles -->
-    <link href="{{ asset('../../assets/admin/pnotify/pnotify.custom.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/admin/pnotify/pnotify.custom.min.css') }}" rel="stylesheet" />
 
     <!-- Datatables styles -->
     <link rel="stylesheet" type="text/css" href="https:////cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
 
     <!-- Custom Theme Style -->
-    <link href="{{ asset('../../assets/admin/css/custom.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/admin/css/custom.min.css') }}" rel="stylesheet">
 </head>
 
 <body class="nav-md">

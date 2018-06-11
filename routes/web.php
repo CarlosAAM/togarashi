@@ -12,10 +12,17 @@
 */
 
 Route::get('/', function () {
-    return redirect(route('admin.dishes'));
+    return redirect(route('guest.index'));
 });
 
 Auth::routes();
+
+// Guest routes
+Route::group(['as' => 'guest.', 'namespace' => 'Guest'], function() {
+    
+    // Main page routes
+    Route::get('/', 'MainController@index')->name('index');
+});
 
 // Administration routes
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => 'auth'], function() {
@@ -41,6 +48,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('/platillos', 'DishController@store')->name('dishes.store');
     Route::put('/platillos/{dish}', 'DishController@update')->name('dishes.update');
     Route::delete('/platillos/{dish}', 'DishController@destroy')->name('dishes.destroy');
+
+    // Images routes
+    Route::get('/imagenes', 'ImageController@index')->name('images');
+    Route::post('/imagenes', 'ImageController@store')->name('images.store');
+    Route::delete('/imagenes/{image}', 'ImageController@destroy')->name('images.destroy');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

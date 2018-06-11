@@ -2481,7 +2481,7 @@ if (typeof NProgress != 'undefined') {
 			};
 	   
 		/* DATA TABLES */
-		/*
+			
 			function init_DataTables() {
 				
 				console.log('run_datatables');
@@ -2565,7 +2565,7 @@ if (typeof NProgress != 'undefined') {
 
 				TableManageButtons.init();
 				
-			};*/
+			};
 	   
 			/* CHART - MORRIS  */
 		
@@ -5030,6 +5030,7 @@ if (typeof NProgress != 'undefined') {
 		init_skycons();
 		init_select2();
 		init_validator();
+		init_DataTables();
 		init_chart_doughnut();
 		init_gauge();
 		init_PNotify();

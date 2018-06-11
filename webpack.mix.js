@@ -15,3 +15,5 @@ mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
 
 mix.copyDirectory('resources/assets/admin', 'public/assets/admin');
+
+mix.copyDirectory('resources/assets/pato', 'public/assets/pato');
