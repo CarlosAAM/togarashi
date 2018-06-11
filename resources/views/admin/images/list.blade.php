@@ -12,11 +12,6 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-            @include('admin.images.create')
-
-            <div class="clearfix"></div>
-            <div class="ln_solid"></div>
-
             <div class="row">
                 @foreach($images as $image)
                     <div class="col-md-55">
