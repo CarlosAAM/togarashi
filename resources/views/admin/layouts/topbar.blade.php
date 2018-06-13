@@ -16,6 +16,9 @@
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
                         <li>
+                            <a href="{{ route('register') }}">
+                                <i class="fa fa-user-plus pull-right"></i> Agregar usuario
+                            </a>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="fa fa-sign-out pull-right"></i> Salir
                             </a>
