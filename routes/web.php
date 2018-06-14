@@ -25,6 +25,7 @@ Route::group(['as' => 'guest.', 'namespace' => 'Guest'], function() {
     Route::get('/', 'MainController@index')->name('index');
     Route::get('/menu', 'MainController@menu')->name('menu');
     Route::get('/galeria', 'MainController@gallery')->name('gallery');
+    Route::post('/contacto', 'MainController@contact')->name('contact');
 });
 
 // Administration routes

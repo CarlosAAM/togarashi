@@ -60,7 +60,8 @@
 
         <h3 class="tit7 t-center p-b-62 p-t-105">Envíanos un mensaje</h3>
 
-        <form class="wrap-form-reservation size22 m-l-r-auto">
+        <form class="wrap-form-reservation size22 m-l-r-auto" method="POST" action="{{route('guest.contact')}}">
+            {{ csrf_field() }}
             <div class="row">
                 <div class="col-md-4">
                     <!-- Name -->
