@@ -12,7 +12,11 @@ class ImageController extends Controller
 {
     const DIRECTORIES = [
         ['name' => 'slider', 'title' => 'Slider principal'],
-        ['name' => 'gallery', 'title' => 'Galeria']
+        ['name' => 'gallery', 'title' => 'Imágenes de la galeria'],
+        ['name' => 'welcome', 'title' => 'Sección de bienvenida'],
+        ['name' => 'contact', 'title' => 'Sección de contacto'],
+        ['name' => 'menu', 'title' => 'Sección de menu'],
+        ['name' => 'gallery-header', 'title' => 'Principal de la galería']
     ];
 
     /**
@@ -57,10 +61,18 @@ class ImageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($image)
-    {
-        Storage::delete(str_replace('_', '/', $image));
+    {   
+        $name = explode("_", $image)[1];
+        $directory = new ImageDirectory($name, '');
 
-        session()->flash('success', 'Imagen eliminda exitosamente.');
+        if(count($directory->images) > 1){
+            Storage::delete(str_replace('_', '/', $image));
+            session()->flash('success', 'Imagen eliminda exitosamente.');
+        }
+        else{
+            session()->flash('warning', 'No puedes eliminar esta imagén. Esta sección require tener al menos una imagen.');
+        }
+        
         return redirect(route('admin.images'));
     }
 }

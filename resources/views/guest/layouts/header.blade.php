@@ -16,31 +16,19 @@
                     <nav class="menu">
                         <ul class="main_menu">
                             <li>
-                                <a href="index.html">Home</a>
+                                <a href="{{ route('guest.index') }}">Inicio</a>
                             </li>
 
                             <li>
-                                <a href="menu.html">Menu</a>
+                                <a href="{{ route('guest.menu') }}">Menú</a>
                             </li>
 
                             <li>
-                                <a href="reservation.html">Reservation</a>
+                                <a href="{{ route('guest.gallery') }}">Galeria</a>
                             </li>
 
                             <li>
-                                <a href="gallery.html">Gallery</a>
-                            </li>
-
-                            <li>
-                                <a href="about.html">About</a>
-                            </li>
-
-                            <li>
-                                <a href="blog.html">Blog</a>
-                            </li>
-
-                            <li>
-                                <a href="contact.html">Contact</a>
+                                <a href="{{ route('guest.index') }}#contacto">Contáctanos</a>
                             </li>
                         </ul>
                     </nav>

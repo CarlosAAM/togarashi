@@ -23,4 +23,8 @@
 <!--===============================================================================================-->
 	<script type="text/javascript" src="{{ asset('assets/pato/vendor/lightbox2/js/lightbox.min.js') }}"></script>
 <!--===============================================================================================-->
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{{ asset('assets/pato/js/map-custom.js') }}"></script>
+<!--===============================================================================================-->
 	<script src="{{ asset('assets/pato/js/main.js') }}"></script>

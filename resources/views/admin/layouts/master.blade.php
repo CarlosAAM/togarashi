@@ -63,6 +63,7 @@
 
     @include('admin.layouts.errors')
     @include('admin.layouts.success')
+    @include('admin.layouts.warning')
 </body>
 
 </html>

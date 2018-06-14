@@ -15,6 +15,7 @@ Route::get('/', function () {
     return redirect(route('guest.index'));
 });
 
+// Authentication routes
 Auth::routes();
 
 // Guest routes
@@ -22,6 +23,8 @@ Route::group(['as' => 'guest.', 'namespace' => 'Guest'], function() {
     
     // Main page routes
     Route::get('/', 'MainController@index')->name('index');
+    Route::get('/menu', 'MainController@menu')->name('menu');
+    Route::get('/galeria', 'MainController@gallery')->name('gallery');
 });
 
 // Administration routes
