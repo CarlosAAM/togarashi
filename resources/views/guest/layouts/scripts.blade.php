@@ -5,6 +5,8 @@
 <!--===============================================================================================-->
 	<script type="text/javascript" src="{{ asset('assets/pato/vendor/bootstrap/js/popper.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/pato/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/pato/vendor/daterangepicker/moment.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/pato/vendor/daterangepicker/daterangepicker.js') }}"></script>
 <!--===============================================================================================-->
 	<script type="text/javascript" src="{{ asset('assets/pato/vendor/select2/select2.min.js') }}"></script>
 <!--===============================================================================================-->
@@ -26,5 +28,5 @@
 <!--===============================================================================================-->
 	<script src="{{ asset('assets/pato/js/main.js') }}"></script>
 
-	<!-- Pnotify scripts -->
-<script src="{{ asset('../../assets/admin/pnotify/pnotify.custom.min.js') }}"></script>
+<!-- Pnotify scripts -->
+	<script src="{{ asset('../../assets/admin/pnotify/pnotify.custom.min.js') }}"></script>
