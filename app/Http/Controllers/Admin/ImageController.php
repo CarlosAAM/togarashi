@@ -50,7 +50,7 @@ class ImageController extends Controller
 
         $image = $request->file('image');
         $path = $request->image->store('/'.$request->dir, 'google');
-
+        
         session()->flash('success', 'Imagen guardada exitosamente.');
         return redirect(route('admin.images'));
     }

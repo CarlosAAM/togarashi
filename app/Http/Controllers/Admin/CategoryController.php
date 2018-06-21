@@ -40,11 +40,13 @@ class CategoryController extends Controller
             'image' => 'required|image|mimes:jpeg,jpg,png|dimensions:min_width=1900,min_height=545'
         ]);
 
-        $path = $request->file('image')->store('public/categories'); // storage path
+        $path = $request->image->store('/10HqUyM9OuYz-LmBgyDcGbOpRbc5w3ZTg', 'google'); // guardarlo en el directorio categorias
+        $files = collect(Storage::cloud()->listContents('/10HqUyM9OuYz-LmBgyDcGbOpRbc5w3ZTg', false));
+        $file = (object) $files->where('filename', pathinfo($path, PATHINFO_FILENAME))->first();
 
         $category = Category::create([
             'name' => $request->name,
-            'image' => str_replace('public', 'storage', $path) // web accessible path
+            'image' => $file->basename // web accessible path
         ]);
 
         session()->flash('success', 'Categoria creada correctamente.');
@@ -93,9 +95,15 @@ class CategoryController extends Controller
                 'image' => 'required|image|mimes:jpeg,jpg,png|dimensions:min_width=1900,min_height=545'
             ]);
 
-            Storage::delete(str_replace('storage', 'public', $category->image)); // delete old image with storage path
-            $path = $request->file('image')->store('public/categories');
-            $category->image = str_replace('public', 'storage', $path); // new image with web accessible path
+            $path = $request->image->store('/10HqUyM9OuYz-LmBgyDcGbOpRbc5w3ZTg', 'google'); // guardarlo en el directorio categorias
+            $files = collect(Storage::cloud()->listContents('/10HqUyM9OuYz-LmBgyDcGbOpRbc5w3ZTg', false));
+            
+            $old = (object) $files->where('type', 'file')->where('basename', $category->image)->first();
+            Storage::cloud()->delete($old->dirname.'/'.$old->basename);
+            
+            $file = (object) $files->where('filename', pathinfo($path, PATHINFO_FILENAME))->first();
+
+            $category->image = $file->basename;
         }
 
         $category->name = $request->name;
@@ -114,7 +122,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        Storage::delete(str_replace('storage', 'public', $category->image));
+        $files = collect(Storage::cloud()->listContents('/', true));
+        $file = (object) $files->where('type', 'file')->where('basename', $category->image)->first();
+        Storage::cloud()->delete($file->dirname.'/'.$file->basename);
+
         $category->delete();
 
         session()->flash('success', 'Categoria eliminada correctamente.');

@@ -24,7 +24,7 @@
 
             <div class="col-md-6 p-b-30">
                 <div class="wrap-pic-welcome size2 bo-rad-10 hov-img-zoom m-l-r-auto">
-                    <img src="{{ asset(str_replace('public', 'storage', $image)) }}" alt="IMG-OUR">
+                    <img src="https://drive.google.com/uc?id={{ $image->basename }}" alt="IMG-OUR">
                 </div>
             </div>
         </div>
