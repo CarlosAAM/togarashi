@@ -5,20 +5,12 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 
 use App\Models\ImageDirectory;
 
 class ImageController extends Controller
 {
-    const DIRECTORIES = [
-        ['name' => 'slider', 'title' => 'Slider principal'],
-        ['name' => 'gallery', 'title' => 'Imágenes de la galeria'],
-        ['name' => 'welcome', 'title' => 'Sección de bienvenida'],
-        ['name' => 'contact', 'title' => 'Sección de contacto'],
-        ['name' => 'menu', 'title' => 'Sección de menu'],
-        ['name' => 'gallery-header', 'title' => 'Principal de la galería']
-    ];
-
     /**
      * Display a listing of the resource.
      *
@@ -26,11 +18,19 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $directories = [];
+        $directories = collect(Storage::cloud()->listContents('/', false));
 
-        foreach(self::DIRECTORIES as $dir) {
-            array_push($directories, new ImageDirectory($dir['name'], $dir['title']));
-        }
+        $directories->transform(function($dir, $key) {
+            $files = collect(Storage::cloud()->listContents($dir['path'], false));
+            $files->transform(function($file, $key) {
+                return (object) $file;
+            }); 
+
+            $dir['files'] = $files->where('type', 'file')->sortBy('name');
+            return (object) $dir;
+        });
+
+        $directories = $directories->sortBy('name');
 
         return view('admin.images.index', compact('directories'));
     }
@@ -42,13 +42,14 @@ class ImageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         $this->validate($request, [
-            'name' => 'required',
+            'dir' => 'required',
             'image' => 'required|image|mimes:jpeg,jpg,png'
         ]);
 
-        $path = $request->file('image')->store('public/'.$request->name); // storage path
+        $image = $request->file('image');
+        $path = $request->image->store('/'.$request->dir, 'google');
 
         session()->flash('success', 'Imagen guardada exitosamente.');
         return redirect(route('admin.images'));
@@ -62,15 +63,19 @@ class ImageController extends Controller
      */
     public function destroy($image)
     {   
-        $name = explode("_", $image)[1];
-        $directory = new ImageDirectory($name, '');
+        $files = collect(Storage::cloud()->listContents('/', true));
+        $file = (object) $files->where('type', 'file')->where('basename', $image)->first();
 
-        if(count($directory->images) > 1){
-            Storage::delete(str_replace('_', '/', $image));
-            session()->flash('success', 'Imagen eliminda exitosamente.');
-        }
-        else{
-            session()->flash('warning', 'No puedes eliminar esta imagén. Esta sección require tener al menos una imagen.');
+        if($file) { // file exists
+            $files = collect(Storage::cloud()->listContents('/'.$file->dirname, false))->where('type', 'file');
+            
+            if(count($files) > 1) { // is not the only image
+                Storage::cloud()->delete($file->dirname.'/'.$file->basename);
+                session()->flash('success', 'Imagen eliminda exitosamente.');
+            }
+            else{
+                session()->flash('warning', 'No puedes eliminar esta imagén. Esta sección requiere tener al menos una imagen.');
+            }
         }
         
         return redirect(route('admin.images'));

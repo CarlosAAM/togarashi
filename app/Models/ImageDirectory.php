@@ -11,6 +11,6 @@ class ImageDirectory
     function __construct($name, $title){
         $this->name = $name;
         $this->title = $title;
-        $this->images = Storage::files('public/'.$name);
+        $this->images = collect(Storage::cloud()->listContents($name, false));
     }
 }

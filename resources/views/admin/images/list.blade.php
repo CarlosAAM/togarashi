@@ -1,7 +1,7 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>{{ $title }}</h2>
+            <h2>{{ $directory->name }}</h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li>
                     <a class="collapse-link">
@@ -13,15 +13,15 @@
         </div>
         <div class="x_content">
             <div class="row">
-                @foreach($images as $image)
+                @foreach($directory->files as $image)
                     <div class="col-md-55">
                         <div class="thumbnail">
                             <div class="image view view-first">
-                                <img style="width: 100%; display: block;" src="{{ asset(str_replace('public', 'storage', $image)) }}" alt="image" />
+                                <img style="width: 100%; display: block;" src="https://drive.google.com/uc?id={{ $image->basename }}" alt="image" />
                                 <div class="mask">
                                     <div class="tools tools-bottom">
                                       
-                                        <form action="{{ route('admin.images.destroy', ['id' => str_replace('/', '_', $image)]) }}" method="POST">
+                                        <form action="{{ route('admin.images.destroy', ['id' => $image->basename]) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             
@@ -31,7 +31,7 @@
                                 </div>
                             </div>
                             <div class="caption">
-                                <p>Imagen {{$loop->iteration}} de {{$title}}</p>
+                                <p>Imagen {{$loop->iteration}}</p>
                             </div>
                         </div>
                     </div>
