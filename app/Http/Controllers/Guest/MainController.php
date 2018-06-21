@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
+use Validator;
 
 use App\Mail\ContactMail;
 use App\Models\Category;
@@ -52,15 +53,20 @@ class MainController extends Controller
     }
 
     public function contact(Request $request){
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'name' => 'required|max:100',
-            'email' => 'required|e-mail',
+            'email' => 'required|email',
             'phone' => 'required|integer',
             'message' => 'required|max:1000'
         ]);
 
+        if($validator->fails()){
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
         $mail = Mail::to(User::first())->send(new ContactMail($request));
+        session()->flash('success', 'Mensaje enviado exitosamente.');
         
-        return $mail;
+        return redirect( route('guest.index') );
     }
 }
