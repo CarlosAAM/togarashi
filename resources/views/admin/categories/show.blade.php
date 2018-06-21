@@ -13,7 +13,7 @@ Categoria
     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3">
         <div class="x_panel">
             <div class="x_content">  
-                <img src="{{asset($category->image)}}" alt="..." class="img-responsive">
+                <img src="https://drive.google.com/uc?id={{ $category->image }}" alt="..." class="img-responsive">
                 <h3 class="name text-center">{{$category->name}}</h3>
 
                 <div class="row">

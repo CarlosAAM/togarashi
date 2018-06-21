@@ -1,4 +1,4 @@
-<section id="contacto" class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url({{ asset(str_replace('public', 'storage', $image)) }});">
+<section id="contacto" class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(https://drive.google.com/uc?id={{ $image->basename }});">
     <h2 class="tit6 t-center">Encuéntranos</h2>
 </section>
 

@@ -3,7 +3,7 @@
     <div class="wrap-slick1">
         <div class="slick1">
             @foreach($images as $image)
-                <div class="item-slick1 item1-slick1" style="background-image: url({{ asset(str_replace('public', 'storage', $image)) }}">
+                <div class="item-slick1 item1-slick1" style="background-image: url(https://drive.google.com/uc?id={{ $image->basename }}">
                     <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
                         @switch(($loop->index)%3)
                             @case(0)

@@ -5,8 +5,8 @@
 	@include('guest.sections.slider', ['images' => $sliderImages])
 
     <!-- Welcome -->
-    @include('guest.sections.welcome', ['image' => $welcomeImage[0]])
+    @include('guest.sections.welcome', ['image' => $welcomeImage->first()])
 
     <!-- Contact -->
-    @include('guest.sections.contact', ['image' => $contactImage[0]])
+    @include('guest.sections.contact', ['image' => $contactImage->first()])
 @endsection

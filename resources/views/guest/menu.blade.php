@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Title Page -->
-	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url({{ asset('assets/pato/images/bg-title-page-01.jpg') }});">
+	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(https://drive.google.com/uc?id={{ $image->basename }});">
 		<h2 class="tit6 t-center">
 			Menú
 		</h2>
@@ -11,7 +11,7 @@
     <!-- Main menu -->
     @foreach($categories as $category)
         <section class="section-mainmenu p-t-110 p-b-70 bg1-pattern">
-            <div class="header-mainmenu parallax0 parallax100" style="margin-bottom: 60px; background-image: url({{ asset(str_replace('public', 'storage', $category->image)) }});">
+            <div class="header-mainmenu parallax0 parallax100" style="margin-bottom: 60px; background-image: url(https://drive.google.com/uc?id={{ $category->image }});">
                 <div class="bg1-overlay t-center p-t-170 p-b-165">
                     <h2 class="tit4 t-center">{{ $category->name }}</h2>
                 </div>

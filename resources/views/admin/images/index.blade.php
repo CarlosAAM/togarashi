@@ -13,7 +13,7 @@ Imágenes
     @foreach($directories as $directory)
         <div class="clearfix"></div>
         <div class="row">
-            @include('admin.images.list', ['title' => $directory->title, 'name' => $directory->name, 'images' => $directory->images])
+            @include('admin.images.list', ['directory' => $directory])
         </div>
     @endforeach
 @endsection

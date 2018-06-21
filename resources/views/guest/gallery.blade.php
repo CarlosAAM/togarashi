@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Title Page -->
-    <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url({{ asset('assets/pato/images/bg-title-page-01.jpg') }});">
+    <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(https://drive.google.com/uc?id={{ $image->basename }});">
         <h2 class="tit6 t-center">Galería</h2>
     </section>
 
@@ -17,10 +17,10 @@
             @foreach($images as $image)
                 <!-- Image -->
                 <div class="item-gallery isotope-item bo-rad-10 hov-img-zoom">
-                    <img src="{{ asset(str_replace('public', 'storage', $image)) }}" alt="IMG-GALLERY">
+                    <img src="https://drive.google.com/uc?id={{ $image->basename }}" alt="IMG-GALLERY">
 
                     <div class="overlay-item-gallery trans-0-4 flex-c-m">
-                        <a class="btn-show-gallery flex-c-m fa fa-search" href="{{ asset(str_replace('public', 'storage', $image)) }}" data-lightbox="gallery"></a>
+                        <a class="btn-show-gallery flex-c-m fa fa-search" href="https://drive.google.com/uc?id={{ $image->basename }}" data-lightbox="gallery"></a>
                     </div>
                 </div>
             @endforeach

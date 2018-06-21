@@ -18,12 +18,12 @@
             <form class="form-horizontal form-label-left" method="POST" action="{{route('admin.images.store')}}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Sección</label>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="dir">Sección</label>
 
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <select class="select2_group form-control" id="name" name="name">
+                        <select class="select2_group form-control" id="dir" name="dir">
                             @foreach($directories as $directory)
-                                <option value="{{ $directory->name }}">{{ $directory->title }}</option>
+                                <option value="{{ $directory->path }}">{{ $directory->name }}</option>
                             @endforeach
                         </select>
                     </div>
